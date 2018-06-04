@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PPTDataSet" targetNamespace="http://tempuri.org/PPTDataSet.xsd" xmlns:mstns="http://tempuri.org/PPTDataSet.xsd" xmlns="http://tempuri.org/PPTDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="PPTConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PPTConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.PPTConnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SubProgRptTableAdapter" GeneratorDataComponentClassName="SubProgRptTableAdapter" Name="SubProgRpt" UserDataComponentName="SubProgRptTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PPTConnection (Web.config)" DbObjectName="PPT.dbo.SubProgRpt1" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     Project_ID, VISITNUM, VISIT, INVID, SUBJID, GENDER, DOB, CONSENT_DATE, FROM_SCH_DT, ACTUAL_DATE, Sequence
+FROM         SubProgRpt1
+order by Sequence</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Project_ID" DataSetColumn="Project_ID" />
+              <Mapping SourceColumn="VISITNUM" DataSetColumn="VISITNUM" />
+              <Mapping SourceColumn="VISIT" DataSetColumn="VISIT" />
+              <Mapping SourceColumn="INVID" DataSetColumn="INVID" />
+              <Mapping SourceColumn="SUBJID" DataSetColumn="SUBJID" />
+              <Mapping SourceColumn="GENDER" DataSetColumn="GENDER" />
+              <Mapping SourceColumn="DOB" DataSetColumn="DOB" />
+              <Mapping SourceColumn="CONSENT_DATE" DataSetColumn="CONSENT_DATE" />
+              <Mapping SourceColumn="FROM_SCH_DT" DataSetColumn="FROM_SCH_DT" />
+              <Mapping SourceColumn="ACTUAL_DATE" DataSetColumn="ACTUAL_DATE" />
+              <Mapping SourceColumn="Sequence" DataSetColumn="Sequence" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PPTDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PPTDataSet" msprop:Generator_UserDSName="PPTDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SubProgRpt" msprop:Generator_TableClassName="SubProgRptDataTable" msprop:Generator_TableVarName="tableSubProgRpt" msprop:Generator_TablePropName="SubProgRpt" msprop:Generator_RowDeletingName="SubProgRptRowDeleting" msprop:Generator_UserTableName="SubProgRpt" msprop:Generator_RowChangingName="SubProgRptRowChanging" msprop:Generator_RowEvHandlerName="SubProgRptRowChangeEventHandler" msprop:Generator_RowDeletedName="SubProgRptRowDeleted" msprop:Generator_RowEvArgName="SubProgRptRowChangeEvent" msprop:Generator_RowChangedName="SubProgRptRowChanged" msprop:Generator_RowClassName="SubProgRptRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Project_ID" msprop:Generator_ColumnVarNameInTable="columnProject_ID" msprop:Generator_ColumnPropNameInRow="Project_ID" msprop:Generator_ColumnPropNameInTable="Project_IDColumn" msprop:Generator_UserColumnName="Project_ID" type="xs:int" />
+              <xs:element name="VISITNUM" msprop:Generator_ColumnVarNameInTable="columnVISITNUM" msprop:Generator_ColumnPropNameInRow="VISITNUM" msprop:Generator_ColumnPropNameInTable="VISITNUMColumn" msprop:Generator_UserColumnName="VISITNUM" type="xs:int" />
+              <xs:element name="VISIT" msprop:Generator_ColumnVarNameInTable="columnVISIT" msprop:Generator_ColumnPropNameInRow="VISIT" msprop:Generator_ColumnPropNameInTable="VISITColumn" msprop:Generator_UserColumnName="VISIT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="INVID" msprop:Generator_ColumnVarNameInTable="columnINVID" msprop:Generator_ColumnPropNameInRow="INVID" msprop:Generator_ColumnPropNameInTable="INVIDColumn" msprop:Generator_UserColumnName="INVID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SUBJID" msprop:Generator_ColumnVarNameInTable="columnSUBJID" msprop:Generator_ColumnPropNameInRow="SUBJID" msprop:Generator_ColumnPropNameInTable="SUBJIDColumn" msprop:Generator_UserColumnName="SUBJID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GENDER" msprop:Generator_ColumnVarNameInTable="columnGENDER" msprop:Generator_ColumnPropNameInRow="GENDER" msprop:Generator_ColumnPropNameInTable="GENDERColumn" msprop:Generator_UserColumnName="GENDER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DOB" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDOB" msprop:Generator_ColumnPropNameInRow="DOB" msprop:Generator_ColumnPropNameInTable="DOBColumn" msprop:Generator_UserColumnName="DOB" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSENT_DATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCONSENT_DATE" msprop:Generator_ColumnPropNameInRow="CONSENT_DATE" msprop:Generator_ColumnPropNameInTable="CONSENT_DATEColumn" msprop:Generator_UserColumnName="CONSENT_DATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FROM_SCH_DT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFROM_SCH_DT" msprop:Generator_ColumnPropNameInRow="FROM_SCH_DT" msprop:Generator_ColumnPropNameInTable="FROM_SCH_DTColumn" msprop:Generator_UserColumnName="FROM_SCH_DT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ACTUAL_DATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnACTUAL_DATE" msprop:Generator_ColumnPropNameInRow="ACTUAL_DATE" msprop:Generator_ColumnPropNameInTable="ACTUAL_DATEColumn" msprop:Generator_UserColumnName="ACTUAL_DATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sequence" msprop:Generator_ColumnVarNameInTable="columnSequence" msprop:Generator_ColumnPropNameInRow="Sequence" msprop:Generator_ColumnPropNameInTable="SequenceColumn" msprop:Generator_UserColumnName="Sequence" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

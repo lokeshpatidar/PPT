@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58029EC3-90EE-4795-A890-D59E16F865CE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPT</RootNamespace>
+    <AssemblyName>PPT</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Add_User_Groups.aspx" />
+    <Content Include="Add_User_Group_Rights.aspx" />
+    <Content Include="Add_User_Profile.aspx" />
+    <Content Include="Add_User_Rights.aspx" />
+    <Content Include="AjaxFunction.aspx" />
+    <Content Include="Auth.aspx" />
+    <Content Include="Change_Password.aspx" />
+    <Content Include="DataEntry.aspx" />
+    <Content Include="Delete_User_Group.aspx" />
+    <Content Include="EditSubjVisitDetails.aspx" />
+    <Content Include="Edit_User_Details.aspx" />
+    <Content Include="Edit_User_Group_Details.aspx" />
+    <Content Include="ExistingPatientEntry.aspx" />
+    <Content Include="frmINVDETAILS.aspx" />
+    <Content Include="frmPROJDETAILS.aspx" />
+    <Content Include="frmSUBJDETAILS.aspx" />
+    <Content Include="frmVISITDETAILS.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="Images\logo.png" />
+    <Content Include="NewPatientEntry.aspx" />
+    <Content Include="Remove_User_Group_Rights.aspx" />
+    <Content Include="Remove_User_Rights.aspx" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.dataTables1.7.2.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\pikaday.jquery.js" />
+    <Content Include="Scripts\pikaday.js" />
+    <Content Include="SessionExpired.aspx" />
+    <Content Include="Styles\demo_table1.7.2.css" />
+    <Content Include="Styles\demo_table_jui1.7.2.css" />
+    <Content Include="Styles\jquery-ui-timepicker-addon.css" />
+    <Content Include="Styles\Jquery.ui.css" />
+    <Content Include="Styles\pikaday.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="SubProgReport.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebForm1.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Add_User_Groups.aspx.cs">
+      <DependentUpon>Add_User_Groups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Add_User_Groups.aspx.designer.cs">
+      <DependentUpon>Add_User_Groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Add_User_Group_Rights.aspx.cs">
+      <DependentUpon>Add_User_Group_Rights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Add_User_Group_Rights.aspx.designer.cs">
+      <DependentUpon>Add_User_Group_Rights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Add_User_Profile.aspx.cs">
+      <DependentUpon>Add_User_Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Add_User_Profile.aspx.designer.cs">
+      <DependentUpon>Add_User_Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Add_User_Rights.aspx.cs">
+      <DependentUpon>Add_User_Rights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Add_User_Rights.aspx.designer.cs">
+      <DependentUpon>Add_User_Rights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxFunction.aspx.cs">
+      <DependentUpon>AjaxFunction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxFunction.aspx.designer.cs">
+      <DependentUpon>AjaxFunction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auth.aspx.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth.aspx.designer.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Change_Password.aspx.cs">
+      <DependentUpon>Change_Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Change_Password.aspx.designer.cs">
+      <DependentUpon>Change_Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonFunction.cs" />
+    <Compile Include="DAL.cs" />
+    <Compile Include="DataEntry.aspx.cs">
+      <DependentUpon>DataEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataEntry.aspx.designer.cs">
+      <DependentUpon>DataEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Delete_User_Group.aspx.cs">
+      <DependentUpon>Delete_User_Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Delete_User_Group.aspx.designer.cs">
+      <DependentUpon>Delete_User_Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditSubjVisitDetails.aspx.cs">
+      <DependentUpon>EditSubjVisitDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditSubjVisitDetails.aspx.designer.cs">
+      <DependentUpon>EditSubjVisitDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Edit_User_Details.aspx.cs">
+      <DependentUpon>Edit_User_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Edit_User_Details.aspx.designer.cs">
+      <DependentUpon>Edit_User_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Edit_User_Group_Details.aspx.cs">
+      <DependentUpon>Edit_User_Group_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Edit_User_Group_Details.aspx.designer.cs">
+      <DependentUpon>Edit_User_Group_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExistingPatientEntry.aspx.cs">
+      <DependentUpon>ExistingPatientEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExistingPatientEntry.aspx.designer.cs">
+      <DependentUpon>ExistingPatientEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmINVDETAILS.aspx.cs">
+      <DependentUpon>frmINVDETAILS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmINVDETAILS.aspx.designer.cs">
+      <DependentUpon>frmINVDETAILS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPROJDETAILS.aspx.cs">
+      <DependentUpon>frmPROJDETAILS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPROJDETAILS.aspx.designer.cs">
+      <DependentUpon>frmPROJDETAILS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmSUBJDETAILS.aspx.cs">
+      <DependentUpon>frmSUBJDETAILS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSUBJDETAILS.aspx.designer.cs">
+      <DependentUpon>frmSUBJDETAILS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmVISITDETAILS.aspx.cs">
+      <DependentUpon>frmVISITDETAILS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmVISITDETAILS.aspx.designer.cs">
+      <DependentUpon>frmVISITDETAILS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyCon.cs" />
+    <Compile Include="NewPatientEntry.aspx.cs">
+      <DependentUpon>NewPatientEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPatientEntry.aspx.designer.cs">
+      <DependentUpon>NewPatientEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PPTDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPTDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remove_User_Group_Rights.aspx.cs">
+      <DependentUpon>Remove_User_Group_Rights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Remove_User_Group_Rights.aspx.designer.cs">
+      <DependentUpon>Remove_User_Group_Rights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Remove_User_Rights.aspx.cs">
+      <DependentUpon>Remove_User_Rights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Remove_User_Rights.aspx.designer.cs">
+      <DependentUpon>Remove_User_Rights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionExpired.aspx.cs">
+      <DependentUpon>SessionExpired.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SubProgReport.aspx.cs">
+      <DependentUpon>SubProgReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubProgReport.aspx.designer.cs">
+      <DependentUpon>SubProgReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptSubProg.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PPTDataSet.xsc">
+      <DependentUpon>PPTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PPTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PPTDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PPTDataSet.xss">
+      <DependentUpon>PPTDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2013</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

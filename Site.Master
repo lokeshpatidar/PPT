@@ -1,0 +1,540 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PPT.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <!-- for jquery version 1.7.2 //-->
+    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!-- for jquery version 1.7.2 //-->
+    <!-- for jquery ui 1.8.9 //-->
+    <link href="Styles/Jquery.ui.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-ui.js" type="text/javascript"></script>
+    <!-- for jquery ui 1.8.9 //-->
+    <!-- for pikaday datepicker//-->
+    <link href="Styles/pikaday.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/moment.js" type="text/javascript"></script>
+    <script src="Scripts/pikaday.js" type="text/javascript"></script>
+    <script src="Scripts/pikaday.jquery.js" type="text/javascript"></script>
+    <!-- for pikaday datepicker//-->
+    <!-- for jquery datatable 1.7.2//-->
+    <%--<script src="Scripts/jquery.dataTables1.7.2.js" type="text/javascript"></script>
+    <link href="Styles/demo_table_jui1.7.2.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/demo_table1.7.2.css" rel="stylesheet" type="text/css" />--%>
+    <!-- for jquery datatable 1.7.2//-->
+
+ <%--   <script src="Scripts/CommonFunction.js" type="text/javascript"></script>--%>
+
+<%--    <script src="Scripts/jquery-ui-timepicker-addon.js" type="text/javascript"></script> 
+    <link href="Styles/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />--%>
+
+   <%-- <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+--%>
+
+
+
+    <script type="text/javascript">
+
+        var CurrentObj = "";
+        var CurrentObjType = "";
+        var counter = 0;
+        var query = "0";
+        var controlType;
+        var overrideid;
+
+        $(document).ready(function () {
+            $('.txtDate').each(function (index, element) {
+                $(element).pikaday({
+                    field: element,
+                    // trigger: $(element).closest('div').find('.datepicker-button').get(0), // <<<<
+                    // firstDay: 1,
+                    //position: 'top right',
+                    // minDate: new Date('2000-01-01'),
+                     maxDate: new Date() , 
+                    //maxDate: new Date('9999-12-31'),
+                    format: 'DD-MMM-YYYY',
+                    //  defaultDate: new Date(''),
+                    //setDefaultDate: false,
+                    yearRange: [1910, 2050]
+
+                });
+            });
+
+           // window.history.forward(1);
+
+
+//            if (window.history && window.history.pushstate) {
+
+//                window.history.pushstate('forward', null, '');
+
+//                $(window).on('popstate', function () {
+
+//                   // alert('back button was pressed.');
+//                    var url = "sessionexpired.aspx";
+//                    $(location).attr('href', url);
+//                });
+
+//            }
+
+            // $('.txtTime').timepicker();
+
+            // $('.txtTime').timepicker({});
+
+            //            $('.txtTime').on('changeTime', function () {
+            //                alert("fds");
+            //            });
+
+     
+            //only for numeric value
+            $('.numeric').keypress(function (event) {
+                //                    var key = e.charCode || e.keyCode || 0;
+                //                    // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+                //                    // home, end, period, and numpad decimal
+                //                    return (
+                //                key == 8 ||
+                //                key == 9 ||
+                //                key == 13 ||
+                //                key == 46 ||
+                //                key == 110 ||
+                //                key == 190 ||
+                //                (key >= 35 && key <= 40) ||
+                //                (key >= 48 && key <= 57) ||
+                //                (key >= 96 && key <= 105));
+
+                if (event.keyCode == 8 || event.keyCode == 9 || event.charCode == 48 || event.charCode == 49 || event.charCode == 50 || event.charCode == 51
+                || event.charCode == 52 || event.charCode == 52 || event.charCode == 53 || event.charCode == 54 || event.charCode == 55 || event.charCode == 56 || event.charCode == 57) {
+                    // let it happen, don't do anything
+                    return true;
+                }
+                else {
+                    event.preventDefault();
+                }
+            });
+            //only numeric and decimal value Accept
+            $('.numericdecimal').keypress(function (event) {
+                // Allow only backspace and delete
+                if (event.charCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.charCode == 48 || event.charCode == 49 || event.charCode == 50 || event.charCode == 51
+                || event.charCode == 52 || event.charCode == 52 || event.charCode == 53 || event.charCode == 54 || event.charCode == 55 || event.charCode == 56 || event.charCode == 57) {
+                    // let it happen, don't do anything
+                    return true;
+                }
+                if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+                    this.value = '';
+                }
+                event.preventDefault();
+
+            });
+
+            $('.txtDate').keypress(function (event) {
+                if (event.keyCode == 9) {
+                    //let it happen, don't do anything
+                    return true;
+                }
+                event.preventDefault();
+                return false;
+            });        
+        
+        });
+      
+        //onfocus of any control this function will call    
+        function myFocus(element) {
+            var test = $(element).val().trim();
+            $('#hdn_Value').val(test);
+          //  counter++;
+            //alert(test);
+        }
+
+
+        //onchange event of any control in gridview this function will call
+        function myFunction(element) {
+
+            var hdnValue = $('#hdn_Value').val().trim();
+            var elementValue = $(element).val().trim();
+
+            if (hdnValue == "") {
+                return false;
+            }
+            else {               
+                if (hdnValue == elementValue) {
+                    return false;
+                }
+                else {
+
+                    var fieldName = $(element).attr('title'); //FieldName
+                    CurrentObj = $(element).attr('id');
+                    if ($(element).is("input")) {
+                        controlType = "textbox"
+                    }
+                    if ($(element).is("select")) {
+                        controlType = "drp"
+                    }                            
+                    $('#txt_DMOldValue').val(hdnValue);
+                    $('#txt_DMNewValue').val(elementValue);                 
+                    $('#txt_DMFieldName').val(fieldName);               
+                    $('#txt_DMComments').val("");
+                    $('#drp_DMReason').val('0');
+
+                    $("#popup_UpdateDMData").dialog({
+                        title: "Reason For Change",
+                        width: 460,
+                        height: 300,
+                        modal: true
+                    });
+                }
+                return false;   
+              //  alert("data change");
+            }
+        }
+
+
+        //onchange event of any control in gridview this function will call
+        function myFunctionVisit(element) {
+
+            var hdnValue = $('#hdn_Value').val().trim();
+            var elementValue = $(element).val().trim();
+
+            if (hdnValue == "") {
+                return false;
+            }
+            else {
+                if (hdnValue == elementValue) {
+                    return false;
+                }
+                else {
+
+                    var fieldName = $(element).attr('title'); //FieldName
+                    CurrentObj = $(element).attr('id');
+                    if ($(element).is("input")) {
+                        controlType = "textbox"
+                    }
+                    if ($(element).is("select")) {
+                        controlType = "drp"
+                    }
+
+                    var Visit = $(element).closest('tr').find('td:eq(1)').find('input').val(); //unique id for each row
+
+
+                    var VisitNo = $(element).closest('tr').find('td:eq(2)').find('input').val(); //unique id for each row
+
+                    $('#txt_Visit').val(Visit);
+                    $('#txt_VisitNo').val(VisitNo);
+                    $('#txt_OldValue').val(hdnValue);
+                    $('#txt_NewValue').val(elementValue);
+                    $('#txt_FieldName').val(fieldName);
+                    $('#txt_Comments').val("");
+                    $('#drp_Reason').val('0');
+
+                    $("#popup_UpdateVisitData").dialog({
+                        title: "Reason For Change",
+                        width: 460,
+                        height: 300,
+                        modal: true
+                    });
+                }
+                return false;
+                //  alert("data change");
+            }
+        }
+
+        //For ajax function call on update data button click
+        function UpdateData() {
+            if ($("#drp_DMReason option:selected").val() == 0) {
+                alert("Please select reason");
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "AjaxFunction.aspx/UpdateData",
+                data: '{VISITNUM: "NULL",FieldName: "' + $("#txt_DMFieldName")[0].value.trim() + '",OldValue: "' + $("#txt_DMOldValue")[0].value.trim() + '",NewValue: "' + $("#txt_DMNewValue")[0].value.trim() + '",Reason: "' + $("#drp_DMReason option:selected").text() + '",Comments: "' + $("#txt_DMComments")[0].value.trim() + '",ControlType: "' + controlType + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {                  
+                    if (data.d == "Record Updated successfully.") {
+                        alert(data.d);
+                        $('#' + CurrentObj + '').val($("#txt_DMNewValue")[0].value.trim()); //on cancel click set old value to control
+                        $("#popup_UpdateDMData").dialog('close');                     
+                        return false;
+                    }
+                    else {
+                        if (data.d == 'Object reference not set to an instance of an object.') {
+                            alert("Session Expired");
+                            var url = "SessionExpired.aspx";
+                            $(location).attr('href', url);
+                        }
+                        alert(data.d);
+                        //alert("Some error occured contact administartor");
+                        console.log(data.d);
+                        $('#' + CurrentObj + '').val($("#txt_DMOldValue")[0].value.trim()); //on cancel click set old value to control
+                        $("#popup_UpdateDMData").dialog('close');
+                        return false;
+                    }                  
+                },
+                failure: function (data) {
+                    if (data.d == 'Object reference not set to an instance of an object.') {
+                        alert("Session Expired");
+                        var url = "SessionExpired.aspx";
+                        $(location).attr('href', url);
+                    }
+                    else {
+                        alert("Contact administrator not successfully updated")
+                    }
+
+                }
+            });
+        }
+        //For ajax function call on update data button click
+        function UpdateDataVisit() {
+            if ($("#drp_Reason option:selected").val() == 0) {
+                alert("Please select reason");
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "AjaxFunction.aspx/UpdateData",
+                data: '{VISITNUM: "' + $("#txt_VisitNo")[0].value.trim() + '",FieldName: "' + $("#txt_FieldName")[0].value.trim() + '",OldValue: "' + $("#txt_OldValue")[0].value.trim() + '",NewValue: "' + $("#txt_NewValue")[0].value.trim() + '",Reason: "' + $("#drp_Reason option:selected").text() + '",Comments: "' + $("#txt_Comments")[0].value.trim() + '",ControlType: "' + controlType + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d == "Record Updated successfully.") {
+                        alert(data.d);
+                        $('#' + CurrentObj + '').val($("#txt_NewValue")[0].value.trim()); //on cancel click set old value to control
+                        $("#popup_UpdateVisitData").dialog('close');
+                        return false;
+                    }
+                    else {
+                        if (data.d == 'Object reference not set to an instance of an object.') {
+                            alert("Session Expired");
+                            var url = "SessionExpired.aspx";
+                            $(location).attr('href', url);
+                        }
+                        alert("Some error occured contact administartor");
+                        console.log(data.d);
+                        $('#' + CurrentObj + '').val($("#txt_OldValue")[0].value.trim()); //on cancel click set old value to control
+                        $("#popup_UpdateVisitData").dialog('close');
+                        return false;
+                    }     
+                },
+                failure: function (data) {
+                    if (data.d == 'Object reference not set to an instance of an object.') {
+                        alert("Session Expired");
+                        var url = "SessionExpired.aspx";
+                        $(location).attr('href', url);
+                    }
+                    else {
+                        alert("Contact administrator not successfully updated")
+                    }
+
+                }
+            });
+        }
+
+        //on cancel click of update reason for change popup
+        function CancelUpdateVisit() {
+            $('#' + CurrentObj + '').val($("#txt_OldValue")[0].value.trim()); //on cancel click set old value to control
+            $("#popup_UpdateVisitData").dialog('close');
+            //$(this).closest(".ui-dialog").next(".ui-widget-overlay").remove();
+            return false;
+        }
+        //on cancel click of update reason for change popup
+        function CancelUpdate() {         
+            $('#' + CurrentObj + '').val($("#txt_DMOldValue")[0].value.trim()); //on cancel click set old value to control
+            $("#popup_UpdateDMData").dialog('close');
+            //$(this).closest(".ui-dialog").next(".ui-widget-overlay").remove();
+            return false;
+        }
+
+
+        function OnSuccess(response) {
+            if (response.d == "Record Updated successfully.") {
+                alert(response.d);              
+                $('#' + CurrentObj + '').val($("#txt_DMNewValue")[0].value.trim()); //on cancel click set old value to control
+                $("#popup_UpdateDMData").dialog('close');
+              //  window.location = window.location;
+                return false;
+            }
+            if (response.d == 'Object reference not set to an instance of an object.') {
+                alert("Session Expired");
+                var url = "SessionExpired.aspx";
+                $(location).attr('href', url);
+            }
+            else {
+                alert("Some error occured contact administartor");
+                console.log(response.d);               
+                $('#' + CurrentObj + '').val($("#txt_DMOldValue")[0].value.trim()); //on cancel click set old value to control
+                $("#popup_UpdateDMData").dialog('close');
+                return false;
+            }
+        }
+    
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .menu
+        {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <div class="header">
+        <asp:HiddenField ID="hdn_Value" runat="server" Value="" />
+            
+
+
+                  <div class="title">
+                <h1>                                     
+                    Patient Progression Tracking&nbsp;</h1>
+
+           <td valign="top" align="left"><asp:Literal ID="Rotator" runat="server"></asp:Literal></td>
+                <table cellpadding="5" cellspacing="0" width="100%" align="center">
+               
+                    <tr>
+                       <td align="left" class="">
+                       <asp:HyperLink id="HyperLink3" runat="server" Font-Size="X-Small" 
+                                NavigateUrl="~/HomePage.aspx" Font-Bold="True" Font-Names="Arial" 
+                                Font-Underline="False" ForeColor="White">Home | </asp:HyperLink>                            
+                            <asp:HyperLink id="HyperLink1" runat="server" Font-Size="X-Small" 
+                                NavigateUrl="~/Auth.aspx" Font-Bold="True" Font-Names="Arial" 
+                                Font-Underline="False" ForeColor="White"  >LogOut | </asp:HyperLink>
+                            <asp:HyperLink id="HyperLink2" runat="server" Font-Size="X-Small" 
+                                NavigateUrl="~/Change_Password.aspx" Font-Bold="True" Font-Names="Arial" 
+                                Width="90px" Font-Underline="False" ForeColor="White"> Change Password</asp:HyperLink>
+                            <asp:HyperLink ID="lnkSupport" runat="server" Font-Bold="True" 
+                                ForeColor="White" Visible="False"
+                                NavigateUrl="http://support.DiagnoSearch.com" Target="_blank" 
+                                Font-Size="X-Small">Support.Diagnosearch.com</asp:HyperLink>
+                            <%# Eval("Text") %>
+                      </td>
+                        <td align="right">
+                    <asp:Label ID="Lbl_PWD_Exp1" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="X-Small"
+                        ForeColor="White" BackColor="Black" Visible="False"></asp:Label>
+                    <asp:Label ID="Welcome" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="X-Small"
+                        ForeColor="White" Text=" Welcome"></asp:Label>
+                            <asp:Label ID="Lbl_User_Info" runat="server" Font-Size="Smaller" 
+                                ForeColor="White"></asp:Label>
+                            <asp:Label ID="Lbl_1" runat="server" Font-Size="Smaller" 
+                                ForeColor="White">||</asp:Label>
+                            <asp:Label ID="Lbl_User_Dept" runat="server" Font-Size="Smaller" 
+                                ForeColor="White"></asp:Label>
+                            <asp:Label ID="Lbl_2" runat="server" Font-Size="Smaller" 
+                                ForeColor="White">||</asp:Label>
+                            <asp:Label ID="Lbl_User_Country" runat="server" Font-Size="Smaller" 
+                                ForeColor="White"></asp:Label>                          
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+                    BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" 
+                    Font-Size="0.8em" ForeColor="#7C6F57" StaticSubMenuIndent="10px" 
+                    DisappearAfter="0">
+                    <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#003366" />
+                    <DynamicSelectedStyle BackColor="#5D7B9D" />
+                    <DynamicItemTemplate>
+                        <%# Eval("Text") %>
+                    </DynamicItemTemplate>
+                    <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#5D7B9D" />
+                </asp:Menu>
+            </div>
+            <div id="popup_UpdateDMData" title="Reason For Change" class="disp-none">             
+                          
+                <div class="formControl">
+                    <asp:Label ID="Label8" runat="server" CssClass="wrapperLable" Text="Field Name"></asp:Label>
+                    <asp:TextBox ID="txt_DMFieldName" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label1" runat="server" CssClass="wrapperLable" Text="Old value"></asp:Label>
+                    <asp:TextBox ID="txt_DMOldValue" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label2" runat="server" CssClass="wrapperLable" Text="New value"></asp:Label>
+                    <asp:TextBox ID="txt_DMNewValue" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label3" runat="server" CssClass="wrapperLable" Text="Reason"></asp:Label>
+                    <asp:DropDownList ID="drp_DMReason" CssClass="width245px" runat="server">
+                        <asp:ListItem Value="0">--Select--</asp:ListItem>
+                        <asp:ListItem Value="Transcription error">Transcription error</asp:ListItem>
+                        <asp:ListItem Value="Others">Others</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label9" runat="server" CssClass="wrapperLable" Text="Comments"></asp:Label>
+                    <asp:TextBox ID="txt_DMComments" CssClass="width245px" TextMode="MultiLine" runat="server"></asp:TextBox>
+                </div>
+                <div style="margin-top: 10px">
+                    <asp:Button ID="btn_DMUpdate" runat="server" Style="margin-left: 107px;" OnClientClick="UpdateData()"
+                        Text="Update Data" />
+                    <asp:Button ID="btn_DMCancel" runat="server" Style="margin-left: 62px" Text="Cancel"
+                        OnClientClick="CancelUpdate()" />
+                </div>
+            </div>
+            <div id="popup_UpdateVisitData" title="Reason For Change" class="disp-none">                         
+               
+                <div class="formControl">
+                    <asp:Label ID="Label5" runat="server" CssClass="wrapperLable" Text="Field Name"></asp:Label>
+                    <asp:TextBox ID="txt_FieldName" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+
+                <div class="formControl">
+                    <asp:Label ID="Label4" runat="server" CssClass="wrapperLable" Text="Visit"></asp:Label>
+                    <asp:TextBox ID="txt_Visit" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+
+                <div class="formControl disp-none">
+                    <asp:Label ID="Label6" runat="server" CssClass="wrapperLable" Text="VisitNo"></asp:Label>
+                    <asp:TextBox ID="txt_VisitNo" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label7" runat="server" CssClass="wrapperLable" Text="Old value"></asp:Label>
+                    <asp:TextBox ID="txt_OldValue" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label10" runat="server" CssClass="wrapperLable" Text="New value"></asp:Label>
+                    <asp:TextBox ID="txt_NewValue" CssClass="width245px" Enabled="false" runat="server"></asp:TextBox>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label11" runat="server" CssClass="wrapperLable" Text="Reason"></asp:Label>
+                    <asp:DropDownList ID="drp_Reason" CssClass="width245px" runat="server">
+                        <asp:ListItem Value="0">--Select--</asp:ListItem>
+                        <asp:ListItem Value="Transcription error">Transcription error</asp:ListItem>
+                        <asp:ListItem Value="Others">Others</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="formControl">
+                    <asp:Label ID="Label12" runat="server" CssClass="wrapperLable" Text="Comments"></asp:Label>
+                    <asp:TextBox ID="txt_Comments" CssClass="width245px" TextMode="MultiLine" runat="server"></asp:TextBox>
+                </div>
+                <div style="margin-top: 10px">
+                    <asp:Button ID="Button1" runat="server" Style="margin-left: 107px;" OnClientClick="UpdateDataVisit()"
+                        Text="Update Data" />
+                    <asp:Button ID="Button2" runat="server" Style="margin-left: 62px" Text="Cancel"
+                        OnClientClick="CancelUpdateVisit()" />
+                </div>
+            </div>
+        </div>       
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">       
+    </div>
+    </form>
+</body>
+</html>
+
+
